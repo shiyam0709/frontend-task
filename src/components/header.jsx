@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from "@/components/ui/theme-toggle"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import {
     Sheet,
     SheetContent,
@@ -17,9 +17,9 @@ import { useUser } from '@/context/UserContext'
 
 const Header = () => {
     const navigate = useNavigate();
-    const location = useLocation();
-    const currentPath = location.pathname;
-    const { setUserInfo } = useUser();
+    const { userInfo, setUserInfo } = useUser();
+
+    // console.log(userInfo);
 
     const handleLogout = () => {
         setUserInfo(null);
@@ -29,16 +29,16 @@ const Header = () => {
     return (
         <header className='flex p-3 items-center shadow shadow-gray-400'>
             <h3 className="pl-3 text-2xl font-semibold tracking-tight">
-                {currentPath === '/login' ? 'Hey There!' : 'Hey Akshay!'}
+                {!userInfo ? 'Hey There!' : `Hey ${userInfo?.first_name}!`}
             </h3>
             <div className='ml-auto flex items-center space-x-2'>
                 <ThemeToggle />
-                {currentPath === '/' && (
+                {userInfo?.role === '4826' && (
                     <Button className='hover:cursor-pointer' onClick={() => navigate("/admin")}>
                         Edit Roles
                     </Button>
                 )}
-                {currentPath !== '/login' && (
+                {userInfo && (
                     <>
                         <Button className='hover:cursor-pointer' onClick={handleLogout}>
                             Logout
@@ -67,17 +67,19 @@ const Header = () => {
                                         <Label htmlFor="firstname" className="text-right">
                                             First Name
                                         </Label>
-                                        <Input id="firstname" value="Pedro Duarte" tabindex="-1" readOnly className="col-span-3 hover:cursor-default" />
+                                        <Input id="firstname" value={userInfo?.first_name} tabIndex="-1" readOnly className="col-span-3 hover:cursor-default" />
                                         <Label htmlFor="lastname" className="text-right">
                                             Last Name
                                         </Label>
-                                        <Input id="lastname" value="Pedro Duarte" tabindex="-1" readOnly className="col-span-3 hover:cursor-default" />
-                                    </div>
-                                    <div className="grid grid-cols-4 items-center gap-4">
+                                        <Input id="lastname" value={userInfo?.last_name} tabIndex="-1" readOnly className="col-span-3 hover:cursor-default" />
                                         <Label htmlFor="email" className="text-right">
                                             Email
                                         </Label>
-                                        <Input id="email" value="@peduarte" tabindex="-1" readOnly className="col-span-3 hover:cursor-default" />
+                                        <Input id="email" value={userInfo?.email} tabIndex="-1" readOnly className="col-span-3 hover:cursor-default" />
+                                        <Label htmlFor="region" className="text-right">
+                                            Region
+                                        </Label>
+                                        <Input id="region" value={userInfo?.region} tabIndex="-1" readOnly className="col-span-3 hover:cursor-default" />
                                     </div>
                                 </div>
                             </SheetContent>

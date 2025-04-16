@@ -10,9 +10,13 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { useAdmin } from '@/context/AdminContext'
 import React from 'react'
 
 const Home = () => {
+    const { adminInfo, setAdminInfo } = useAdmin();
+
+
     return (
         <main className='flex flex-col w-screen min-h-screen'>
             <Header />

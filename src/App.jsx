@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import Admin from './pages/Admin'
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/context/ThemeContext"
 import { UserProvider } from './context/UserContext'
 
 const App = () => {
