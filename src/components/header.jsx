@@ -13,7 +13,6 @@ import {
 import { Label } from './ui/label'
 import { Input } from './ui/input'
 import { useUser } from '@/context/UserContext'
-// import { SidebarTrigger } from "@/components/ui/sidebar"
 
 const Header = () => {
     const location = useLocation();

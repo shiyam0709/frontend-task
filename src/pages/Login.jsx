@@ -12,7 +12,6 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 import { useMutation } from '@tanstack/react-query'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -24,22 +23,18 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { setUserInfo } = useUser();
-  // console.log(email)
-  // console.log(password)
 
   const getUserInfo = async ({ email, password }) => {
     const response = await axios.post('http://localhost:8080/api/login', {
       email,
       password,
     })
-    // console.log(response.data)
     return response.data
   }
 
-  const { mutate, isPending, isError, error, } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: getUserInfo,
     onSuccess: (data) => {
-      console.log("Login successful:", data);
       setUserInfo(data);
       navigate('/');
     },
@@ -51,7 +46,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      console.error("Email and password are required.");
+      alert("Email and password are required.");
       return;
     }
     mutate({ email, password });

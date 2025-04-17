@@ -6,17 +6,11 @@ import Admin from './pages/Admin'
 import { ThemeProvider } from "@/context/ThemeContext"
 import { useUser } from './context/UserContext'
 import Manager from './pages/Manager'
-// import { SidebarProvider } from "@/components/ui/sidebar"
-// import { AppSidebar } from "@/components/app-sidebar"
 
 const App = () => {
   const { userInfo } = useUser();
 
   return (
-    // <SidebarProvider>
-    //   {userInfo && (
-    //     <AppSidebar />
-    //   )}
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Routes>
         {userInfo ? (
@@ -36,7 +30,6 @@ const App = () => {
         )}
       </Routes>
     </ThemeProvider >
-    // </SidebarProvider>
   )
 }
 

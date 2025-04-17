@@ -3,7 +3,6 @@ import Header from '@/components/header'
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
     TableHead,
     TableHeader,
@@ -36,13 +35,11 @@ const Home = () => {
 
     const fetchSales = async () => {
         const response = await axios.get('http://localhost:8080/api/sales/all')
-        console.log(response.data)
         return response.data
     }
 
     const fetchUsersList = async () => {
         const response = await axios.get('http://localhost:8080/api/admin')
-        console.log(response.data)
         return response.data
     }
 
@@ -75,7 +72,7 @@ const Home = () => {
             queryClient.invalidateQueries(['usersList']);
         },
         onError: (error) => {
-            console.error('Failed to update role:', error);
+            alert('Failed to update role', error);
         },
     })
 
