@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from "@/components/ui/theme-toggle"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import {
     Sheet,
     SheetContent,
@@ -16,10 +16,9 @@ import { useUser } from '@/context/UserContext'
 
 
 const Header = () => {
+    const location = useLocation();
     const navigate = useNavigate();
     const { userInfo, setUserInfo } = useUser();
-
-    // console.log(userInfo);
 
     const handleLogout = () => {
         setUserInfo(null);
@@ -33,7 +32,7 @@ const Header = () => {
             </h3>
             <div className='ml-auto flex items-center space-x-2'>
                 <ThemeToggle />
-                {userInfo?.role === '4826' && (
+                {userInfo?.role === '4826' && location.pathname !== "/admin" && (
                     <Button className='hover:cursor-pointer' onClick={() => navigate("/admin")}>
                         Edit Roles
                     </Button>

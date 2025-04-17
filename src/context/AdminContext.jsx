@@ -7,7 +7,7 @@ export const AdminProvider = ({ children }) => {
 
     return (
         <AdminContext.Provider value={{ adminInfo, setAdminInfo }}>
-            {{ children }}
+            {children}
         </AdminContext.Provider>
     );
 };
