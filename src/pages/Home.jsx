@@ -50,7 +50,7 @@ const Home = () => {
                     </TableBody>
                 </Table>
             </div>
-            <Footer />
+                        {/* <Footer /> */}
         </main>
     )
 }

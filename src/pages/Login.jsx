@@ -79,7 +79,7 @@ const Login = () => {
           </CardFooter>
         </Card>
       </form>
-      <Footer />
+                  {/* <Footer /> */}
     </main>
   );
 };
