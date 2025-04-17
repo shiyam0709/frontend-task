@@ -25,6 +25,8 @@ const App = () => {
             <Route path='/admin' element={<Admin />} />
             <Route path='/manager/users' element={<Manager />} />
             <Route path='/manager/sales' element={<Manager />} />
+            <Route path='/admin/users' element={<Admin />} />
+            <Route path='/admin/sales' element={<Admin />} />
           </>
         ) : (
           <>

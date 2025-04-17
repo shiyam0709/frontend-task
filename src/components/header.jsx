@@ -27,19 +27,30 @@ const Header = () => {
 
     return (
         <header className='flex p-3 items-center shadow shadow-gray-400'>
-            {/* {userInfo && (
-                <SidebarTrigger className='hover:cursor-pointer' />
-            )} */}
             <div className='ml-2 flex items-center space-x-6'>
                 <h3 className="text-2xl font-semibold tracking-tight">
                     {!userInfo ? 'Hey There!' : `Hey ${userInfo?.first_name}!`}
                 </h3>
-                <Link to='/manager/users'>
-                    <p className='underline hover:cursor-pointer hover:opacity-60 font-semibold'>Users</p>
-                </Link>
-                <Link to='/manager/sales'>
-                    <p className='underline hover:cursor-pointer hover:opacity-60 font-semibold'>Sales</p>
-                </Link>
+                {userInfo && userInfo.role === '9284' && (
+                    <>
+                        <Link to='/manager/users'>
+                            <p className='underline hover:cursor-pointer hover:opacity-60 font-semibold'>Users</p>
+                        </Link>
+                        <Link to='/manager/sales'>
+                            <p className='underline hover:cursor-pointer hover:opacity-60 font-semibold'>Sales</p>
+                        </Link>
+                    </>
+                )}
+                {userInfo && userInfo.role === '4826' && (
+                    <>
+                        <Link to='/admin/users'>
+                            <p className='underline hover:cursor-pointer hover:opacity-60 font-semibold'>Users</p>
+                        </Link>
+                        <Link to='/admin/sales'>
+                            <p className='underline hover:cursor-pointer hover:opacity-60 font-semibold'>Sales</p>
+                        </Link>
+                    </>
+                )}
             </div>
             <div className='ml-auto flex items-center space-x-2'>
                 <ThemeToggle />
