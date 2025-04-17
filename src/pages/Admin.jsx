@@ -98,9 +98,9 @@ const Home = () => {
                                             <SelectContent>
                                                 <SelectGroup>
                                                     <SelectLabel>Roles</SelectLabel>
-                                                    <SelectItem value="user">User</SelectItem>
-                                                    <SelectItem value="manager">Manager</SelectItem>
-                                                    <SelectItem value="admin">Admin</SelectItem>
+                                                    <SelectItem value="User">User</SelectItem>
+                                                    <SelectItem value="Manager">Manager</SelectItem>
+                                                    <SelectItem value="Admin">Admin</SelectItem>
                                                 </SelectGroup>
                                             </SelectContent>
                                         </Select>

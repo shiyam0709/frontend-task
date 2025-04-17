@@ -9,30 +9,44 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { useQuery } from "@tanstack/react-query"
+import axios from "axios"
 import React from 'react'
 
-const Home = () => {
 
+const Home = () => {
+    const fetchProducts = async () => {
+        const response = await axios.get('http://localhost:8080/api/products')
+        return response.data
+    }
+
+    const { data } = useQuery({
+        queryKey: ['productsList'],
+        queryFn: fetchProducts,
+    });
+    console.log(data)
     return (
         <main className='flex flex-col w-screen min-h-screen'>
             <Header />
             <div className='flex grow items-center'>
-                <Table className='border-2 w-10/12 mx-auto'>
+                <Table className='border-2 w-8/12 mx-auto'>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>Name</TableHead>
-                            <TableHead>Email</TableHead>
-                            <TableHead>Region</TableHead>
-                            <TableHead className="text-right">Role</TableHead>
+                            <TableHead>Product id</TableHead>
+                            <TableHead>Product Name</TableHead>
+                            <TableHead>Category</TableHead>
+                            <TableHead>Prize</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        <TableRow>
-                            <TableCell>John Doe</TableCell>
-                            <TableCell>john.doe@example.com</TableCell>
-                            <TableCell>North America</TableCell>
-                            <TableCell className="text-right">Admin</TableCell>
-                        </TableRow>
+                        {data?.map((product) => (
+                            <TableRow key={product.productId}>
+                                <TableCell>{product.productId}</TableCell>
+                                <TableCell>{product.productName}</TableCell>
+                                <TableCell>{product.category}</TableCell>
+                                <TableCell>{product.price}</TableCell>
+                            </TableRow>
+                        ))}
                     </TableBody>
                 </Table>
             </div>
