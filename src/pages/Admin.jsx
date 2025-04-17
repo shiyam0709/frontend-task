@@ -113,7 +113,7 @@ const Home = () => {
 
             </div>
             <Button className='w-[100px] mx-auto hover:cursor-pointer' onClick={handleUpdateRoles}>Update</Button>
-            <Footer />
+            {/*             {/* <Footer /> */} */}
         </main>
     )
 }
