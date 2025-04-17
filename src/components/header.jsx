@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from "@/components/ui/theme-toggle"
-import { useNavigate, useLocation } from "react-router-dom"
+import { useNavigate, useLocation, Link } from "react-router-dom"
 import {
     Sheet,
     SheetContent,
@@ -13,7 +13,7 @@ import {
 import { Label } from './ui/label'
 import { Input } from './ui/input'
 import { useUser } from '@/context/UserContext'
-
+// import { SidebarTrigger } from "@/components/ui/sidebar"
 
 const Header = () => {
     const location = useLocation();
@@ -27,9 +27,20 @@ const Header = () => {
 
     return (
         <header className='flex p-3 items-center shadow shadow-gray-400'>
-            <h3 className="pl-3 text-2xl font-semibold tracking-tight">
-                {!userInfo ? 'Hey There!' : `Hey ${userInfo?.first_name}!`}
-            </h3>
+            {/* {userInfo && (
+                <SidebarTrigger className='hover:cursor-pointer' />
+            )} */}
+            <div className='ml-2 flex items-center space-x-6'>
+                <h3 className="text-2xl font-semibold tracking-tight">
+                    {!userInfo ? 'Hey There!' : `Hey ${userInfo?.first_name}!`}
+                </h3>
+                <Link to='/manager/users'>
+                    <p className='underline hover:cursor-pointer hover:opacity-60 font-semibold'>Users</p>
+                </Link>
+                <Link to='/manager/sales'>
+                    <p className='underline hover:cursor-pointer hover:opacity-60 font-semibold'>Sales</p>
+                </Link>
+            </div>
             <div className='ml-auto flex items-center space-x-2'>
                 <ThemeToggle />
                 {userInfo?.role === '4826' && location.pathname !== "/admin" && (

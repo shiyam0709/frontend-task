@@ -1,4 +1,3 @@
-import Footer from "@/components/footer"
 import Header from "@/components/header"
 import {
     Table,
@@ -24,7 +23,7 @@ const Home = () => {
         queryKey: ['productsList'],
         queryFn: fetchProducts,
     });
-    console.log(data)
+
     return (
         <main className='flex flex-col w-screen min-h-screen'>
             <Header />
@@ -50,7 +49,6 @@ const Home = () => {
                     </TableBody>
                 </Table>
             </div>
-                        {/* <Footer /> */}
         </main>
     )
 }
