@@ -37,9 +37,9 @@ const Home = () => {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {data?.map((product) => (
+                        {data?.map((product, i) => (
                             <TableRow key={product.productId}>
-                                <TableCell>{product.productId}</TableCell>
+                                <TableCell>{i + 1}</TableCell>
                                 <TableCell>{product.productName}</TableCell>
                                 <TableCell>{product.category}</TableCell>
                                 <TableCell>{product.price}</TableCell>

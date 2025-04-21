@@ -27,9 +27,9 @@ const Header = () => {
     return (
         <header className='flex p-3 items-center shadow shadow-gray-400'>
             <div className='ml-2 flex items-center space-x-6'>
-                <h3 className="text-2xl font-semibold tracking-tight">
+                <Link to={"/"} className="text-2xl font-semibold tracking-tight">
                     {!userInfo ? 'Hey There!' : `Hey ${userInfo?.first_name}!`}
-                </h3>
+                </Link>
                 {userInfo && userInfo.role === '9284' && (
                     <>
                         <Link to='/manager/users'>

@@ -86,26 +86,26 @@ const Manager = () => {
                         }
                     </TableHeader>
                     <TableBody>
-                        {location.pathname === '/' && productsData?.map((product) => (
+                        {location.pathname === '/' && productsData?.map((product, i) => (
                             <TableRow key={product.productId}>
-                                <TableCell>{product.productId}</TableCell>
+                                <TableCell>{i + 1}</TableCell>
                                 <TableCell>{product.productName}</TableCell>
                                 <TableCell>{product.category}</TableCell>
                                 <TableCell>{product.price}</TableCell>
                             </TableRow>
                         ))}
-                        {location.pathname === '/manager/sales' && salesData?.map((sale) => (
+                        {location.pathname === '/manager/sales' && salesData?.map((sale, i) => (
                             <TableRow key={sale.sale_id}>
-                                <TableCell>{sale.sale_id}</TableCell>
+                                <TableCell>{i + 1}</TableCell>
                                 <TableCell>{sale.product_name}</TableCell>
                                 <TableCell>{sale.region}</TableCell>
                                 <TableCell>{sale.sale_date}</TableCell>
                                 <TableCell>{sale.sale_amount}</TableCell>
                             </TableRow>
                         ))}
-                        {location.pathname === '/manager/users' && usersData?.map((user) => (
+                        {location.pathname === '/manager/users' && usersData?.map((user, i) => (
                             <TableRow key={user.user_id}>
-                                <TableCell>{user.user_id}</TableCell>
+                                <TableCell>{i + 1}</TableCell>
                                 <TableCell>{user.first_name}</TableCell>
                                 <TableCell>{user.last_name}</TableCell>
                                 <TableCell>{user.email}</TableCell>

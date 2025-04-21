@@ -64,10 +64,7 @@ const Login = () => {
           <CardContent className='space-y-3'>
             <Input placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
             <Input placeholder='Password' type='password' onChange={(e) => setPassword(e.target.value)} />
-            <div className='flex space-x-2'>
-              <Checkbox id='save-pass' />
-              <Label htmlFor='save-pass' className='font-normal'>Save password</Label>
-            </div>
+
           </CardContent>
           <CardFooter>
             <Button className='w-full hover:cursor-pointer'>Sign In</Button>
